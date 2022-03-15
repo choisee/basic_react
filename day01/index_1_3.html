@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>구구단</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+<body>
+<div id="root"></div> <!-- 결과 : <div id="root"><button>Like</button></div> -->
+
+<script type="text/babel">
+
+    class GuGuDan extends React.Component {
+//        생략 가능
+//        constructor(props) {
+//            super(props);
+//            this.state = {
+//                first: Math.ceil(Math.random() * 9),
+//                second: Math.ceil(Math.random() * 9),
+//                value: '',
+//                result: '',
+//            };
+//        }
+
+        state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '',
+            result: '',
+        };
+
+        onSubmit = (e) => {
+            e.preventDefault();
+            if (parseInt(this.state.value) === this.state.first * this.state.second) {
+//                prevState 적용
+//                this.setState({
+//                    result: this.state.value + ' 정답!',
+//                    first: Math.ceil(Math.random() * 9),
+//                    second: Math.ceil(Math.random() * 9),
+//                    value: '',
+//                });
+                this.setState((prevState) => {
+                    return {
+                        result: prevState.value + ' 정답!',
+                        first: Math.ceil(Math.random() * 9),
+                        second: Math.ceil(Math.random() * 9),
+                        value: '',
+                    }
+                });
+            } else {
+                this.setState({
+                    result: '땡',
+                    value: '',
+                })
+            }
+        };
+
+        onChange = (e) => this.setState({value: e.target.value});
+
+        render() {
+            return (((
+                    <React.Fragment>
+                        <div>{this.state.first} 곱하기 {this.state.second}는?</div>
+                        <form onSubmit={this.onSubmit}>
+                            <input type="number" value={this.state.value} onChange={this.onChange}/>
+                            <button>입력!</button>
+                        </form>
+                        <div>{this.state.result}</div>
+                    </React.Fragment>
+            )));
+        }
+    }
+</script>
+<!-- 쓸데 없는 div를 없앨 수 있다 <div> -> <> 로 작성하면 된다 with babel 툴 (without babel use React.Fragment)-->
+<!-- (()) 연산자. 의미 없음, 소스 가독성을 위해 사용함 -->
+<!-- 직접 만든 함수는 => 화살표 함수를 사용 해야 한다, function을 사용하면 this의 scope 가 달라져버림 -->
+<!-- constructor에 super는 생략하고 state만 정의 해도 된다 -->
+<!-- prevState.value (this.state.value)는 현재의 값 value는 미래의 값이다 -->
+<!-- setState안에서 예전 값으로 표현 해야 할 경우 prevState로 함수를 쓰자 -->
+
+<script type="text/babel">
+    ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
+</script>
+
+</body>
+</html>

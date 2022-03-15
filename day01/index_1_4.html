@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>구구단</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+<body>
+<div id="root"></div> <!-- 결과 : <div id="root"><button>Like</button></div> -->
+
+<script type="text/babel">
+
+    class GuGuDan extends React.Component {
+//        생략 가능
+//        constructor(props) {
+//            super(props);
+//            this.state = {
+//                first: Math.ceil(Math.random() * 9),
+//                second: Math.ceil(Math.random() * 9),
+//                value: '',
+//                result: '',
+//            };
+//        }
+
+        state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '',
+            result: '',
+        };
+
+        onSubmit = (e) => {
+            e.preventDefault();
+            if (parseInt(this.state.value) === this.state.first * this.state.second) {
+//                prevState 적용
+//                this.setState({
+//                    result: this.state.value + ' 정답!',
+//                    first: Math.ceil(Math.random() * 9),
+//                    second: Math.ceil(Math.random() * 9),
+//                    value: '',
+//                });
+                this.setState((prevState) => {
+                    return {
+                        result: prevState.value + ' 정답!',
+                        first: Math.ceil(Math.random() * 9),
+                        second: Math.ceil(Math.random() * 9),
+                        value: '',
+                    }
+                });
+                this.input.focus();
+            } else {
+                this.setState({
+                    result: '땡',
+                    value: '',
+                });
+                this.input.focus();
+            }
+        };
+
+        onChange = (e) => this.setState({value: e.target.value});
+
+        input;
+
+        onRefInput = (c) => { this.input = c;}
+
+        render() {
+            console.log('렌더링')
+            // 10초 걸리는 작업을 여기에서 수행하면 한글자 칠때마다 10초씩 걸리므로 주의
+            return (((
+                    <React.Fragment>
+                        <div>{this.state.first} 곱하기 {this.state.second}는?</div>
+                        <form onSubmit={this.onSubmit}>
+                            <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange}/>
+                            <button>입력!</button>
+                        </form>
+                        <div>{this.state.result}</div>
+                    </React.Fragment>
+            )));
+        }
+    }
+</script>
+
+<script type="text/babel">
+    ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
+</script>
+<!-- 돔에 직접 접근 하고 싶을 때는 document로 접근하지 말고 class 안에 input을 선언(?)하고 ref를 사용하면 된다 -->
+<!-- <input ref={(c) => { this.input = c;}} 이렇게 함수를 정의 하면 render()가 수행될떄마다 함수가 새로 생성됨. 따라서 class내 메소드로 빼두자 -->
+
+
+</body>
+</html>
