@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>구구단</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+<body>
+<div id="root"></div> <!-- 결과 : <div id="root"><button>Like</button></div> -->
+
+<script type="text/babel">
+
+    // 함수 컴포넌트
+    const GuGuDan = () => {
+
+        // 구조분해 문법
+        const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9))
+        const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9))
+        const [value, setValue] = React.useState('')
+        const [result, setResult] = React.useState('')
+        const inputRef = React.useRef(null); // DOM 접근용
+
+//        아래와 같이 사용하면 부분 setState를 할 때 불필요한 코드가 들어가서 Hooks 사용시 위와 같이 쪼개서 사용함
+//        const [state, setState] = React.useState({ value: '', ... })
+
+        const onChangeInput = (e) => {
+            setValue(e.target.value);
+        }
+
+        const onSubmitForm = (e) => {
+            e.preventDefault();
+            if (parseInt(value) === first * second) {
+                setResult('정답: ' + value);
+                setFirst(Math.ceil(Math.random() * 9));
+                setSecond(Math.ceil(Math.random() * 9));
+                setValue('');
+                inputRef.current.focus();
+            } else {
+                setResult('땡');
+                setValue('');
+                inputRef.current.focus();
+            }
+        }
+
+
+        console.log('렌더링')
+
+        return (
+            <React.Fragment>
+                <div> {first} 곱하기 {second} 는? </div>
+                <form onSubmit={onSubmitForm}>
+                    <input ref={inputRef} onChange={onChangeInput} value={value} />
+                    <button id="button" className="defaultBtn" >입력!</button>
+                </form>
+                <div id="result">{result}</div>
+            </React.Fragment>
+        );
+
+        // return <div> {first} {second} {value} {result} </div>
+        // return <div>Hello, Hooks</div>
+    }
+
+</script>
+
+<script type="text/babel">
+    ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
+</script>
+<!-- setState, ref를 사용하지 않는 컴포넌트는 이런 함수 컴포넌트를 사용한다 -->
+<!-- 함수 컴포넌트도 setState, ref를 사용할 수 있게 요구함 -->
+<!-- 클래스 컴포넌트를 hooks로 바꿀 수 있음 -->
+<!-- setState를 분리한다 -->
+<!-- 클래스 안에 state 넣듯이 GuGuDan 컴포넌트 안에 넣어야한다 -->
+<!-- 코드양도 클래스형보다 훨씬 줄어든다 -->
+<!-- state 가 바뀌면 함수컴포넌트 전체가 재실행되어 클래스 컴포넌트 보다 조금 더 느릴 수 있고 내부에서 함수(ex. onSubmitForm)를 재생성하는 단점이 있다 -->
+<!-- react 에서는 class 대신 className 을 써야함 -->
+<!-- react 에서는 for 대신 htmlFor 를 써야함 -->
+<!-- form submit 할 경우 렌더링은 한번 일어남 setFirst, setSecond ... 4번에 아님. 비동기로 한꺼번에 처리함. -->
+
+</body>
+</html>
