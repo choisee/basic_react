@@ -1,7 +1,7 @@
 const React = require('react');
 const {Component} = React;
 
-class WordReply extends Component {
+class WordRelay extends Component {
 
     state = {
         text: 'Hello, webpack',
@@ -12,4 +12,4 @@ class WordReply extends Component {
     }
 }
 
-module.exports = WordReply;
+module.exports = WordRelay;
