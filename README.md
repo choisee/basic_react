@@ -12,3 +12,4 @@
 - state, setState, ref, ...
 - setting target browsers using preset-env option (cf. browserslist)
 - set HotReload
+- class to Hooks
