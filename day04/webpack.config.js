@@ -1,9 +1,11 @@
 const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+// process.env.NODE_ENV = 'production';
+
 module.exports = {
     name: 'day04',
-    mode: 'development',
+    mode: 'development', // development production
     devtool: 'inline-source-map',
     resolve: {
         extensions: ['.js', '.jsx'],
