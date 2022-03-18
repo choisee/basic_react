@@ -5,6 +5,8 @@ import Try from './try';
 
 // 숫자 4개를 겹치지 않고 랜덤하게 뽑는 함수
 function getNumbers(){
+    console.log('getNumbers'); // 계속 불리는 이슈
+    
     const candidate = [1,2,3,4,5,6,7,8,9];
     const array = [];
 
@@ -312,3 +314,6 @@ export default NumberBaseball; // import NumberBaseball;
 // getNumbers() 처럼 함수를 class 외부로 빼놓으면 Hooks 로 바꿀때에도 독립적은 함수라 수정하지 않아도 되어 편리함
 
 // context, redux : A가 C에게 바로 props를 줄 때 필요함 (A -> B -> C)
+
+
+// 함수 컴포넌트에서 <input 에 value 가 바뀌면 내부 통째로 갱신되어 input 입력할때마다 실행되는 이슈 나중에 useEffect 배우고 수정 가능함

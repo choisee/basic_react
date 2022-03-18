@@ -24,6 +24,12 @@
 - two way : class vs hooks, useRef vs createRef, setState vs setState(()=>{})
 - handling props in child component
 
+------------
+#### Used Commands
+- npm i -D webpack webpack-cli webpack-dev-server
+- npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader
+- npm i -D @pmmmwh/react-refresh-webpack-plugin react-refresh
+- npm i react react-dom
 
 ------------
 ###### watched ZeroCho TV on Youtube :)
