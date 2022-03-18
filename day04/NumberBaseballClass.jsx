@@ -101,11 +101,25 @@ const NumberBaseball = memo(() => {
         </form>
         <div>시도 : {tries.length}</div>
         <ul>
+            {/* 즉시실행함수를 활용하여 for문을 작성함 */}
+            {(() => {
+                const array = [];
+                for(let i = 0; i < tries.length; i++){
+                    array.push(<Try key={`${i + 1}차 시도 :`} tryInfo={tries[i]} />);
+                    
+                }
+                return array;
+            })()}
+            
+            
+            
+            {/*
             {tries.map((v, i) => {
                 return (
                     <Try key={`${i + 1}차 시도 :`} tryInfo={v} />
                 );
             })}
+            */}
         </ul>
         </>
     );
@@ -317,3 +331,5 @@ export default NumberBaseball; // import NumberBaseball;
 
 
 // 함수 컴포넌트에서 <input 에 value 가 바뀌면 내부 통째로 갱신되어 input 입력할때마다 실행되는 이슈 나중에 useEffect 배우고 수정 가능함
+
+// 즉시실행함수를 활용하여 for문을 작성함

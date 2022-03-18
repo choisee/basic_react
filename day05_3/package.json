@@ -1,10 +1,11 @@
 {
-  "name": "day05",
+  "name": "day05_3",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve --env development"
+    "dev": "webpack server --env development"
   },
   "author": "choisee",
   "license": "ISC",

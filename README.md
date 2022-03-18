@@ -23,9 +23,16 @@
 - createRef for class component
 - two way : class vs hooks, useRef vs createRef, setState vs setState(()=>{})
 - handling props in child component
+- use for, if in Hooks using IIEF(Immediately-invoked function expression)
+- use useRef in Hooks for non-screen data changing
+- class component lifecycle
+- high order function : function handles function
+- useEffect (hooks)
+
 
 ------------
 #### Used Commands
+- npm init
 - npm i -D webpack webpack-cli webpack-dev-server
 - npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader
 - npm i -D @pmmmwh/react-refresh-webpack-plugin react-refresh
