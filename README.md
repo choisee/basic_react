@@ -28,7 +28,9 @@
 - class component lifecycle
 - high order function : function handles function
 - useEffect (hooks)
-
+- hooks vs Functional Component
+- useMemo, useEffect, useCallback & hooks ordering
+- call ajax in componentDidMount in hooks
 
 ------------
 #### Used Commands
