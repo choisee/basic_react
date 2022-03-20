@@ -90,3 +90,26 @@ export default RSP;
 // class to hooks
 // useEffect 사용
 // state 마다 다른 effect 를 사용하고 싶을 경우 useEffect를 여러번 사용함
+
+//                          result | imgCoord | score
+// componentDidMount
+// componentDidUpdate
+// componentWillUnmount
+// 클래스는 가로, 훅스는 useEffect마다 세로로 관리함
+// 클래스 - 한번에 처리
+// componentDidMount() {
+//  this.setState({
+//     imgCoord : 3,
+//     score : 1,
+//     result : 2,
+//  });
+// }
+// 훅스 - 각각처리(묶음도 가능) 
+// useEffect(() => {
+//     setImgCoord();
+//     setScore();
+// }, [imgCoord, score]);
+// useEffect(() => {
+//     setResult();
+// }, [result]);
+
