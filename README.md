@@ -31,6 +31,11 @@
 - hooks vs Functional Component
 - useMemo, useEffect, useCallback & hooks ordering
 - call ajax in componentDidMount in hooks
+- use useReducer for many states & dispatch for many setStates
+- how to set data in react 
+- handle states updates asynchronously
+- analize re-rendering isuues using useRef,useEffect, chrome debug tool (w.react developer tool)
+- optimize re-rendering issues using useMemo, memo
 
 ------------
 #### Used Commands
