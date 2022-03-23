@@ -36,6 +36,9 @@
 - handle states updates asynchronously
 - analize re-rendering isuues using useRef,useEffect, chrome debug tool (w.react developer tool)
 - optimize re-rendering issues using useMemo, memo
+- using contextApi: createContext, ~Context.Provider
+- cache contextApi values using useMemo
+- optimize contextApi re-rendering issues using useMemo, memo
 
 ------------
 #### Used Commands
