@@ -39,6 +39,13 @@
 - using contextApi: createContext, ~Context.Provider
 - cache contextApi values using useMemo
 - optimize contextApi re-rendering issues using useMemo, memo
+- use react-router
+- BrowserRouter, HashRouter and DynamicRouteMatching
+- history and this.props.history
+- get queryString using URLSearchParams
+- Switch(v5) / Routes(v6) and exact
+- check npm outdated
+- useLocation, useNavigate
 
 ------------
 #### Used Commands
@@ -47,8 +54,9 @@
 - npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader
 - npm i -D @pmmmwh/react-refresh-webpack-plugin react-refresh
 - npm i react react-dom
-
+- npm i react-router react-router-dom
+- npm i @babel/plugin-proposal-class-properties
 ------------
 ###### watched ZeroCho TV on Youtube :)
-###### https://www.youtube.com/c/ZeroChoTV (리액트 무료 강좌(웹게임))
-###### https://github.com/ZeroCho/react-webgame
+###### https://www.youtube.com/c/ZeroChoTV (lecture - 리액트 무료 강좌(웹게임))
+###### https://github.com/ZeroCho/react-webgame (source codes)
